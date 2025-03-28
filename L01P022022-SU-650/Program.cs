@@ -1,6 +1,15 @@
+using L01P022022_SU_650.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<notasbdcontext>(opt =>
+opt.UseSqlServer(
+builder.Configuration.GetConnectionString("bd_notasConnection")));
+builder.Services.AddControllersWithViews();
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
